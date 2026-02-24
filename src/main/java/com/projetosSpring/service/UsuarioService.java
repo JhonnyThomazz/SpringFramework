@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.projetosSpring.entity.Livro;
 import com.projetosSpring.entity.Usuario;
 import com.projetosSpring.repository.UsuarioRepository;
 
@@ -29,16 +28,16 @@ public class UsuarioService {
 	}
 	
 	//Function_Save
-	public Livro salvarUser(Usuario usuario) {
-		return livroRepository.save(livro);
+	public Usuario salvarUser(Usuario usuario) {
+		return usuarioRepository.save(usuario);
 	}
 	
 	//Function_Update
-	public Livro atualizarLivro(Long id, Livro UpdateLivro) {
-		Optional <Livro> LivroExists = livroRepository.findById(id);
-		if(LivroExists.isPresent()) {
-			UpdateLivro.setId(id);
-			return livroRepository.save(UpdateLivro);
+	public Usuario updateUser(Long id, Usuario updateUser) {
+		Optional <Usuario> UserExists = usuarioRepository.findById(id);
+		if(UserExists.isPresent()) {
+			updateUser.setId(id);
+			return usuarioRepository.save(updateUser);
 		}
 		else {
 			return null;
@@ -46,10 +45,10 @@ public class UsuarioService {
 	}
 	
 	//Function_Delete
-	public Boolean excluirLivro(Long id) {
-		Optional<Livro> LivroExists = livroRepository.findById(id);
-		if(LivroExists.isPresent()) {
-			livroRepository.deleteById(id);
+	public Boolean deleteUser(Long id) {
+		Optional<Usuario> UserExists = usuarioRepository.findById(id);
+		if(UserExists.isPresent()) {
+			usuarioRepository.deleteById(id);
 			return true;
 		}
 		return false;
